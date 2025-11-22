@@ -1,4 +1,4 @@
-package StepDefinitions;
+package stepdefinitions;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -14,29 +14,27 @@ public class MyStepdefs {
     ValidatableResponse vr;
     Response res;
 
-    final static String URL="https://restful-booker.herokuapp.com";
+    final static String URL = "https://restful-booker.herokuapp.com";
 
     @Given("Verify using {string} and {string} and making a get Request")
-    public void verifyUsingAndAndMakingAGetRequest(String url, String booking) {
-
-        r= RestAssured.given();
+    public void verify_using_and_and_making_a_get_request(String url, String booking) {
+        r = RestAssured.given();
         r.baseUri(URL);
-        r.basePath(url+"/"+booking);
+        r.basePath(url + "/" + booking);
         r.contentType(ContentType.JSON);
         r.log().all();
 
-       res=r.when().log().all().get();
-
-
-
+        res = r.when().log().all().get();
 
     }
 
     @Then("Response code {string} status is fetched")
-    public void responseCodeStatusIsFetched(String response) {
-        vr=res.then().log().all();
+    public void response_code_status_is_fetched(String response) {
+        vr = res.then().log().all();
         vr.statusCode(Integer.parseInt(response));
+
     }
 
 
 }
+
