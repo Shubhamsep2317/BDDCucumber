@@ -7,6 +7,7 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
+import org.testng.annotations.Test;
 
 public class MyStepdefs {
 
@@ -15,6 +16,7 @@ public class MyStepdefs {
     Response res;
 
     final static String URL = "https://restful-booker.herokuapp.com";
+
 
     @Given("Verify using {string} and {string} and making a get Request")
     public void verify_using_and_and_making_a_get_request(String url, String booking) {
@@ -27,6 +29,7 @@ public class MyStepdefs {
         res = r.when().log().all().get();
 
     }
+
 
     @Then("Response code {string} status is fetched")
     public void response_code_status_is_fetched(String response) {
